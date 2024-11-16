@@ -1,0 +1,33 @@
+{
+  "name": "proctoring-nestjs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/proctoring-nestjs/src",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "currentVersionResolver": "git-tag"
+      }
+    }
+  },
+  "tags": ["lib nestjs"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/proctoring-nestjs",
+        "tsConfig": "libs/proctoring-nestjs/tsconfig.lib.json",
+        "packageJson": "libs/proctoring-nestjs/package.json",
+        "main": "libs/proctoring-nestjs/src/index.ts",
+        "assets": ["libs/proctoring-nestjs/*.md"]
+      }
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    }
+  }
+}
